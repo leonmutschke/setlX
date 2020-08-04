@@ -1,0 +1,272 @@
+load("baseIntegrationTest.stlx");
+registerTestSuite("stat");
+
+// ************************************************************************** \\
+
+statBeta := procedure() {
+	validateForTestCase("stat_beta(2,3,3)")
+		.that(
+			stat_beta(2,3,3)
+		).is(
+			0.0
+		);
+};
+statBeta();
+
+
+statBetaCDF := procedure() {
+	validateForTestCase("stat_betaCDF(2,3,4)")
+		.that(
+			stat_betaCDF(2,3,4)
+		).is(
+			1.0
+		);
+};
+statBetaCDF();
+
+
+statCauchy := procedure() {
+	validateForTestCase("stat_cauchy(2,3,3)")
+		.that(
+			stat_cauchy(2,3,3)
+		).is(
+			0.09549296585513721
+		);
+};
+statCauchy();
+
+
+statCauchyCDF := procedure() {
+	validateForTestCase("stat_cauchyCDF(2,3,3)")
+		.that(
+			stat_cauchyCDF(2,3,3)
+		).is(
+			0.39758361765043326
+		);
+};
+statCauchyCDF();
+
+
+statChiSquared := procedure() {
+	validateForTestCase("stat_chiSquared(2,3)")
+		.that(
+			stat_chiSquared(2,3)
+		).is(
+			0.2075537487102973
+		);
+};
+statChiSquared();
+
+
+statChiSquaredCDF := procedure() {
+	validateForTestCase("stat_chiSquaredCDF(2,3)")
+		.that(
+			stat_chiSquaredCDF(2,3)
+		).is(
+			0.42759329552912023
+		);
+};
+statChiSquaredCDF();
+
+
+statExponential := procedure() {
+	validateForTestCase("stat_exponential(2,6)")
+		.that(
+			stat_exponential(2,6)
+		).is(
+			0.11942188509563154
+		);
+};
+statExponential();
+
+
+statExponentialCDF := procedure() {
+	validateForTestCase("stat_exponentialCDF(2,6)")
+		.that(
+			stat_exponentialCDF(2,6)
+		).is(
+			0.28346868942621073
+		);
+};
+statExponentialCDF();
+
+
+statFisher := procedure() {
+	validateForTestCase("stat_fisher(3,5,2)")
+		.that(
+			stat_fisher(3,5,2)
+		).is(
+			0.07169777401493928
+		);
+};
+statFisher();
+
+
+statFisherCDF := procedure() {
+	validateForTestCase("stat_fisherCDF(3,5,2)")
+		.that(
+			stat_fisherCDF(3,5,2)
+		).is(
+			0.7313172949523805
+		);
+};
+statFisherCDF();
+
+
+statGamma := procedure() {
+	validateForTestCase("stat_gamma(4,6,3)")
+		.that(
+			stat_gamma(4,6,3)
+		).is(
+			0.003085544918044173
+		);
+};
+statGamma();
+
+
+statGammaCDF := procedure() {
+	validateForTestCase("stat_gammaCDF(4,6,3)")
+		.that(
+			stat_gammaCDF(4,6,3)
+		).is(
+			0.002525287783204569
+		);
+};
+statGammaCDF();
+
+
+statLevy := procedure() {
+	validateForTestCase("stat_levy(6,3,3)")
+		.that(
+			stat_levy(6,3,3)
+		).is(
+			0.08065690817304778
+		);
+};
+statLevy();
+
+
+statLevyCDF := procedure() {
+	validateForTestCase("stat_levyCDF(6,3,3)")
+		.that(
+			stat_levyCDF(6,3,3)
+		).is(
+			0.3173105078629139
+		);
+};
+statLevyCDF();
+
+
+statLogNormal := procedure() {
+		validateForTestCase("stat_logNormal(1,0,0.5)")
+			.that(
+				stat_logNormal(1,0,0.5)
+			).is(
+				1.5957691216057308
+			);
+};
+statLogNormal();
+
+
+statLogNormalCDF := procedure() {
+		validateForTestCase("stat_logNormalCDF(1,0,0.5)")
+			.that(
+				stat_logNormalCDF(1,0,0.5)
+			).is(
+				0.5
+			);
+};
+statLogNormalCDF();
+
+
+statNormal := procedure() {
+	validateForTestCase("statNormal")
+		.that(
+			stat_normal(2,3,9)
+		).is(
+			0.04405413986167643
+		);
+};
+statNormal();
+
+
+statNormalCDF := procedure() {
+		validateForTestCase("stat_normalCDF(2,3,9)")
+			.that(
+				stat_normalCDF(2,3,9)
+			).is(
+				0.4557641189546886
+			);
+};
+statNormalCDF();
+
+
+statPareto := procedure() {
+		validateForTestCase("stat_pareto(6,3,3)")
+			.that(
+				stat_pareto(6,3,3)
+			).is(
+				0.0625
+		);
+};
+statPareto();
+
+
+statParetoCDF := procedure() {
+		validateForTestCase("stat_paretoCDF(6,3,3)")
+			.that(
+				stat_paretoCDF(6,3,3)
+			).is(
+				0.875
+			);
+};
+statParetoCDF();
+
+
+statStudent := procedure() {
+		validateForTestCase("stat_student(2,3)")
+			.that(
+				stat_student(2,3)
+			).is(
+				0.06750966066389291
+			);
+};
+statStudent();
+
+
+statStudentCDF := procedure() {
+		validateForTestCase("stat_studentCDF(2,3)")
+			.that(
+				stat_studentCDF(2,3)
+			).is(
+				0.9303370157205785
+			);
+};
+statStudentCDF();
+
+
+statWeibull := procedure() {
+		validateForTestCase("stat_weibull(2,3,4)")
+			.that(
+				stat_weibull(2,3,4)
+			).is(
+				0.16546816923461166
+			);
+};
+statWeibull();
+
+
+statWeibullCDF := procedure() {
+		validateForTestCase("stat_weibullCDF(2,3,4)")
+			.that(
+				stat_weibullCDF(2,3,4)
+			).is(
+				0.11750309741540454
+			);
+};
+statWeibullCDF();
+
+// ************************************************************************** \\
+
+printTestResult();
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export STAT_PYTHON_CODE="$PWD/stat_python_code"
+
+# execute all python scripts
+for file in `find $STAT_PYTHON_CODE -name '*.py' -prune`        
+    do  
+        echo "Creating reference file for "${file##*/}
+        python $file > $file".reference"
+done

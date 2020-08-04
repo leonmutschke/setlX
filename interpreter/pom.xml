@@ -6,7 +6,7 @@
 
     <groupId>org.randoom.setlx</groupId>
     <artifactId>interpreter</artifactId>
-    <version>2.6.0</version>
+    <version>2.7.2</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -21,6 +21,7 @@
 
         <module>gfx_addon</module>
         <module>plot_addon</module>
+        <module>stat_addon</module>
 
         <module>tools</module>
     </modules>
@@ -120,6 +121,12 @@
                 <plugin>
                     <groupId>org.randoom.setlx.mojo</groupId>
                     <artifactId>setlX-code-generator-maven-plugin</artifactId>
+                    <version>${project.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.randoom.setlx.mojo</groupId>
+                    <artifactId>setlX-version-generator-maven-plugin</artifactId>
                     <version>${project.version}</version>
                 </plugin>
 

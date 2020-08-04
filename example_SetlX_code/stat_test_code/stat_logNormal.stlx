@@ -1,0 +1,15 @@
+//
+// Example for stat_logNormal(x, mu, sigma)
+//
+
+statLogNormal := procedure(x, mu, sigma) {
+
+	print(stat_logNormal(x, mu, sigma));
+};
+
+x  		:= 1;
+mu		:= 0;
+sigma 	:= 0.5;
+
+
+statLogNormal(x, mu, sigma);

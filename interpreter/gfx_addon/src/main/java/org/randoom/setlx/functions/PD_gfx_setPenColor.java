@@ -26,13 +26,12 @@ public class PD_gfx_setPenColor extends GfxFunction {
 
     @Override
     protected Value execute(final State state, final HashMap<ParameterDefinition, Value> args) throws SetlException{
-        if ( args.get(COLOR) != Om.OM ) {
+        if ( args.get(COLOR) == Om.OM ) {
         	StdDraw.setPenColor();
         } else {
-	    	Color c = StdDraw.BLACK;
 	        try {
 	            final Field f = StdDraw.class.getField(args.get(COLOR).getUnquotedString(state).toUpperCase());
-	            c = (Color) f.get(null);
+                Color c = (Color) f.get(null);
 	            StdDraw.setPenColor(c);
 	        } catch (final Exception e) {
 	            final ByteArrayOutputStream out = new ByteArrayOutputStream();

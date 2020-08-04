@@ -14,13 +14,23 @@ mvn clean -P dist-clean
 cd ..
 
 # run tests
-if [ "$1" != "noTests" ]; then
+if [[ "$1" != "noTests"  && "$2" != "noTests" ]]; then
     echo "=> Testing the setlX interpreter ..."
     ./test_all_examples; rc=$?
     if [ $rc -ne 0 ]; then
         echo "=> Errors occured while testing the interpreter."
         echo "=> Distribution stopped!"
         exit 1
+    fi
+fi
+
+if [[ "$1" = "statTests" || "$2" = "statTests" ]]; then
+    echo "=> Testing the statistical distribution functions ..."
+    ./test_stat_examples; rc=$?
+    if [ $rc -ne 0 ]; then
+	echo "=> Errors occured while testing the statistical distribution functions."
+	echo "=> Distribution stopped!"
+	exit 1
     fi
 fi
 
@@ -32,7 +42,7 @@ mvn clean -P dist-clean
 # build the binary version
 echo "=> Rebuilding the setlX interpreter ..."
 mvn install
-if [[ -f "$OVERRIDE_setlXJarDirectory/setlX.jar" && "$OVERRIDE_setlXJarDirectory/setlX-gfx.jar" && "$OVERRIDE_setlXJarDirectory/setlX-plot.jar" ]]; then
+if [[ -f "$OVERRIDE_setlXJarDirectory/setlX.jar" && -f "$OVERRIDE_setlXJarDirectory/setlX-gfx.jar" && -f "$OVERRIDE_setlXJarDirectory/setlX-plot.jar" && -f "$OVERRIDE_setlXJarDirectory/setlX-stat.jar" ]]; then
     # clean it up again (does not remove the jar)
     mvn clean
     echo "=> The setlX interpreter was build correctly."
@@ -150,16 +160,14 @@ devel="setlX_v$versionForFileNames.devel"
 examples="setlX_v$versionForFileNames.examples"
 
 # remove distribution zips if present
-rm -f "$binOnly.zip"
-rm -f "$examples.zip"
-rm -f "$devel.zip"
+rm -f "setlX_v"*".zip"
 # remove other stuff
 rm -f test_failure.*.result
 
 # create binary only zip
 echo -n "=> Creating binary only distribution ... "
 mkdir -p zipContents
-cp changelog.txt manual.pdf tutorial.pdf $OVERRIDE_setlXJarDirectory/setlX $OVERRIDE_setlXJarDirectory/setlX.cmd $OVERRIDE_setlXJarDirectory/setlX.jar $OVERRIDE_setlXJarDirectory/setlX-gfx.jar $OVERRIDE_setlXJarDirectory/setlX-plot.jar zipContents/.
+cp changelog.txt license.txt manual.pdf tutorial.pdf $OVERRIDE_setlXJarDirectory/setlX $OVERRIDE_setlXJarDirectory/setlX.cmd $OVERRIDE_setlXJarDirectory/setlX.jar $OVERRIDE_setlXJarDirectory/setlX-gfx.jar $OVERRIDE_setlXJarDirectory/setlX-plot.jar $OVERRIDE_setlXJarDirectory/setlX-stat.jar zipContents/.
 cp -r syntax_highlighting zipContents/.
 cp -r interpreter/setlXlibrary zipContents/.
 cd zipContents; zip -qr "../$binOnly.zip" . ; cd ..
